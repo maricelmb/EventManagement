@@ -34,11 +34,12 @@ namespace API.Controllers
             return await Mediator.Send(new Details.Query { Id = id });
         }
 
-        //// POST api/<ActivitiesController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST api/<ActivitiesController>
+        [HttpPost]
+        public async Task<IActionResult> CreateActivity(Activity activity)
+        {
+            return Ok(await Mediator.Send(new Create.Command { Activity = activity }) );
+        }
 
         //// PUT api/<ActivitiesController>/5
         //[HttpPut("{id}")]
