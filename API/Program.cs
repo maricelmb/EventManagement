@@ -1,7 +1,6 @@
+using Application.Core;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Persistence;
-using System.Collections.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +17,7 @@ builder.Services.ConfigurePersistenceServices(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(typeof(Application.Activities.List.Handler).Assembly);
+builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
 builder.Services.AddCors(opt =>
     opt.AddPolicy("CorsPolicy", policy => 
